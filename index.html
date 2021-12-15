@@ -1,16 +1,85 @@
 <head>
     <meta charset="utf8">
+    <script src="advent_3.test"></script>
 </head>
 <body>
 <ul>
     <li>
-        <h3>День второй:</h3>
+        <h3>День третий:</h3>
         <ul>
             <li>
                 <p>Empty</p>
                 <p><b>Ответ:</b> <i>
                     <script>
                         
+                    </script>
+                </i></p>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <h3>День второй:</h3>
+        <ul>
+            <li>
+                <p>Ручка находится на высоте 1000000000, а у меня есть 100000 веревочек разной длины. Времени у нас мало, надо получить веревку длиной не меньше чем 1000000000, сделав минимальное количество узлов (то есть использовав минимальное количество веревок).</p>
+                <q>Долбаные говнокодеры из тинька, которые с первого раза не приняли правильный ответ и получил по минимуму балов из-за них.</q>
+                <p><b>Ответ:</b> <i>
+                    <script>
+                        const fn3 = (height, slices) => {
+                            slices = slices.sort((a, b) => b - a);
+
+                            let sum = 0;
+
+                            for (let i = 0; i < slices.length; i++) {
+                                sum += slices[i];
+
+                                if (sum >= height)
+                                    return i;
+                            }
+
+                            return NaN;
+                        };
+
+                        const fn3Wrong2 = (height, slices) => {
+                            let start = 0;
+                            let min = slices.length - 1;
+                            let sum = 0;
+
+                            for (let i = 0; i < slices.length; i++) {
+                                sum += slices[i];
+
+                                if (sum >= height) {
+                                    while (sum - slices[start] >= height) {
+                                        sum -= slices[start];
+                                        ++start;
+                                    }
+
+                                    min = Math.min(min, i - start);
+                                }
+                            }
+
+                            return min;
+                        };
+
+                        const fn3Wrong3 = (height, slices) => {
+                            let begin = 0;
+                            let end = slices.length - 1;
+                            let sum = 0;
+
+                            while (sum < height)
+                                sum += slices[begin++];
+                            
+                            sum = 0;
+
+                            while (sum < height)
+                                sum += slices[end--];
+
+                            return Math.min(begin - 1, slices.length - end - 2);
+                        };
+
+                        const { height, slices } = window.fn3TestData;
+                        
+                        document.write(fn3(height, slices));
                     </script>
                 </i></p>
             </li>
