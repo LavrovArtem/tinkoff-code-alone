@@ -1,128 +1,74 @@
+<html>
 <head>
-    <meta charset="utf8">
-    <script src="advent_3.test"></script>
+  <meta charset="utf8">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
-<ul>
-    <li>
-        <h3>День третий:</h3>
-        <ul>
-            <li>
-                <p>Empty</p>
-                <p><b>Ответ:</b> <i>
-                    <script>
-                        
-                    </script>
-                </i></p>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h3>День второй:</h3>
-        <ul>
-            <li>
-                <p>Ручка находится на высоте 1000000000, а у меня есть 100000 веревочек разной длины. Времени у нас мало, надо получить веревку длиной не меньше чем 1000000000, сделав минимальное количество узлов (то есть использовав минимальное количество веревок).</p>
-                <q>Долбаные говнокодеры из тинька, которые с первого раза не приняли правильный ответ и получил по минимуму балов из-за них.</q>
-                <p><b>Ответ:</b> <i>
-                    <script>
-                        const fn3 = (height, slices) => {
-                            slices = slices.sort((a, b) => b - a);
-
-                            let sum = 0;
-
-                            for (let i = 0; i < slices.length; i++) {
-                                sum += slices[i];
-
-                                if (sum >= height)
-                                    return i;
-                            }
-
-                            return NaN;
-                        };
-
-                        const fn3Wrong2 = (height, slices) => {
-                            let start = 0;
-                            let min = slices.length - 1;
-                            let sum = 0;
-
-                            for (let i = 0; i < slices.length; i++) {
-                                sum += slices[i];
-
-                                if (sum >= height) {
-                                    while (sum - slices[start] >= height) {
-                                        sum -= slices[start];
-                                        ++start;
-                                    }
-
-                                    min = Math.min(min, i - start);
-                                }
-                            }
-
-                            return min;
-                        };
-
-                        const fn3Wrong3 = (height, slices) => {
-                            let begin = 0;
-                            let end = slices.length - 1;
-                            let sum = 0;
-
-                            while (sum < height)
-                                sum += slices[begin++];
-                            
-                            sum = 0;
-
-                            while (sum < height)
-                                sum += slices[end--];
-
-                            return Math.min(begin - 1, slices.length - end - 2);
-                        };
-
-                        const { height, slices } = window.fn3TestData;
-                        
-                        document.write(fn3(height, slices));
-                    </script>
-                </i></p>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h3>День первый:</h3>
-        <ul>
-            <li>
-                <p>В щитке 61429526 переключателей вверх и 61430729 переключателей вниз. Я помню, что для включения щитка нужно включить все переключатели: либо все вверх, либо все вниз. Но я не помню, вверх или вниз. Нам остается только выяснить, какое из двух положений правильное, и просто прощелкать все опытным путем. Но я переживаю, что это будет долго. Можешь посчитать, какого минимального количества щелчков мне гарантированно хватит, чтобы понять?</p>
-                <p><b>Ответ:</b> <i>
-                    <script>
-                        const fn1 = (on, off) => on + off + Math.min(on, off);
-
-                        document.write(fn1(61429526, 61430729));
-                    </script>
-                </i></p>
-            </li>
-            <li>
-                <p>Мне нужно, чтобы две машинки двигались туда-сюда вдоль окна. Одна машинка будет ехать от левого края окна, доезжать до определенной точки и разворачиваться обратно, а вторая — делать то же самое, но от правого края окна. Важно, чтобы процесс повторялся для каждой машинки независимо. Можешь помочь рассчитать, через сколько времени после запуска машинки одновременно окажутся у края окна? Длина окна 945747, а координата точки, куда доезжает машинка, — 130713</p>
-                <p><b>Ответ:</b> <i>
-                    <script>
-                        const fn2 = (length, point) => {
-                            const time1 = point * 2;
-                            const time2 = (length - point) * 2;
-
-                            let step = { left: time1, right: time2 };
-
-                            while (step.left !== step.right) {
-                                if (step.left < step.right)
-                                    step.left += time1;
-                                else
-                                    step.right += time2;
-                            }
-
-                            return step.left;
-                        };
-
-                        document.write(fn2(945747, 130713));
-                    </script>
-                </i></p>
-            </li>
-        </ul>
-    </li>
-</ul>
+  <nav>
+    <img src="logo.svg">
+    <ul>
+      <li>
+        <b>День 1</b>
+        <a href="result.html#n1" target="result">n1</a>
+        <a href="result.html#n2" target="result">n2</a>
+      </li>
+      <li>
+        <b>День 2</b>
+        <a href="result.html#n3" target="result">n3</a>
+      </li>
+      <li>
+        <b>День 3</b>
+        <a href="result.html#n4" target="result">n4</a>
+        <a href="result.html#n5" target="result">n5</a>
+      </li>
+      <li>
+        <b>День 4</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+      <li>
+        <b>День 5</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+      <li>
+        <b>День 6</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+      <li>
+        <b>День 7</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+      <li>
+        <b>День 8</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+      <li>
+        <b>День 9</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+      <li>
+        <b>День 10</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+      <li>
+        <b>День 11</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+      <li>
+        <b>День 12</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+      <li>
+        <b>День 13</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+      <li>
+        <b>День 14</b>
+        <!-- <a href="#n" target="result">n</a> -->
+      </li>
+    </ul>
+  </nav>
+  <iframe name="result"></iframe>
+  <iframe name="pdf"></iframe>
 </body>
+</html>
