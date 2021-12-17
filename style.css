@@ -13,7 +13,7 @@ nav {
   height: calc(100% - 2em);
   padding: 1em;
   background: #132450 linear-gradient(180deg,#132450,#1a96da);
-  float: left;
+  overflow-y: overlay;
 }
 
 nav ul {

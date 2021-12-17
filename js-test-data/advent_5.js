@@ -1,4 +1,4 @@
-window.fn5TestData = {
+window.advent5.testData = {
     pointer: 1234567,
     variants: [
         [1, 2, 3, 4, 6, 7, 8, 9],

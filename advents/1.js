@@ -1,4 +1,3 @@
+window.advent1 = {};
 
-const fn1 = (on, off) => on + off + Math.min(on, off);
-
-document.write(fn1(61429526, 61430729));
+window.advent1.fn1 = ({ on, off }) => on + off + Math.min(on, off);
