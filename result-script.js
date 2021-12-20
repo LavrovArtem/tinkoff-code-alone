@@ -74,4 +74,11 @@ window.addEventListener('load', () => {
     });
 
     runnerReload.addEventListener('click', createRunner);
+
+    parent.postMessage(Array.from(document.querySelectorAll('h4 span')).reduce((sum, el) => {
+        sum.curr += parseInt(el.textContent);
+        sum.full += 100;
+
+        return sum;
+    }, { curr: 0, full: 0 }), '*');
 });

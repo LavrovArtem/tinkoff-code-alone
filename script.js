@@ -26,4 +26,13 @@ window.addEventListener('load', () => {
             selectAdvent(index);
         });
     }
+
+    window.addEventListener('message', ({ data: sum }) => {
+        if (!sum.full)
+            return;
+
+        const score = document.querySelector('#score');
+
+        score.textContent = `Набрано ${sum.curr} очков из ${sum.full}.`;
+    });
 });

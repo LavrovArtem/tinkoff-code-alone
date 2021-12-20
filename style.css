@@ -14,6 +14,7 @@ nav {
   padding: 1em;
   background: #132450 linear-gradient(180deg,#132450,#1a96da);
   overflow-y: overlay;
+    color: #fff;
 }
 
 nav ul {
@@ -29,7 +30,6 @@ nav li {
 
 nav b {
     font-size: 1.3em;
-    color: #fff;
 }
 
 nav a {
@@ -38,6 +38,10 @@ nav a {
     padding: 0.4em;
     color: #333;
     text-decoration: none;
+}
+
+#score {
+    padding: 1em;
 }
 
 nav a:hover {
